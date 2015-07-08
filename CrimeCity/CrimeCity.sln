@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrimeCity", "CrimeCity\CrimeCity.csproj", "{A805B571-1721-43DD-B6AF-CEE52CE2E7CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrimeCity.Tests", "CrimeCity.Tests\CrimeCity.Tests.csproj", "{C24C6D5D-FCEB-40C3-B560-C15206DD98AB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A805B571-1721-43DD-B6AF-CEE52CE2E7CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A805B571-1721-43DD-B6AF-CEE52CE2E7CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A805B571-1721-43DD-B6AF-CEE52CE2E7CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A805B571-1721-43DD-B6AF-CEE52CE2E7CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C24C6D5D-FCEB-40C3-B560-C15206DD98AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C24C6D5D-FCEB-40C3-B560-C15206DD98AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C24C6D5D-FCEB-40C3-B560-C15206DD98AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C24C6D5D-FCEB-40C3-B560-C15206DD98AB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
