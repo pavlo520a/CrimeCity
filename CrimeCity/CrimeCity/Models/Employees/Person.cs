@@ -18,6 +18,7 @@ namespace CrimeCity.Models.Employees
 
     public enum Sex
     {
-        Male, Female
+        Male,
+        Female
     }
 }
