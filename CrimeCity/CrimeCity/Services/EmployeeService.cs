@@ -20,6 +20,7 @@ namespace CrimeCity.Services
                 {
                     FirstName = "Sherlock",
                     LastName = "Holmes",
+                    Sex = Models.Employees.Sex.Male,
                     AssignedCrimes = new List<Crime>()
                     {
                         new Crime()
@@ -34,6 +35,7 @@ namespace CrimeCity.Services
                 {
                     FirstName = "Nick",
                     LastName = "Burkhardt",
+                    Sex = Models.Employees.Sex.Male,
                     AssignedCrimes = new List<Crime>()
                     {
                         new Crime()
@@ -42,8 +44,40 @@ namespace CrimeCity.Services
                             Description = "Grimm"
                         }
                     }
+                },
+
+                new Policeman()
+                {
+                    FirstName = "Eddy",
+                    LastName = "Toyn",
+                    Sex = Models.Employees.Sex.Male,
+                    AssignedCrimes = new List<Crime>()
+                    {
+                        new Crime()
+                        {
+                            Name = "Revers Flash",
+                            Description = "Revers Flash"
+                        }
+                    }
+                },
+
+                new Policeman()
+                {
+                    FirstName = "Lorel",
+                    LastName = "Lance",
+                    Sex = Models.Employees.Sex.Female,
+                    AssignedCrimes = new List<Crime>()
+                    {
+                        new Crime()
+                        {
+                            Name = "Merlin",
+                            Description = "Destroy Merlin"
+                        }
+                    }
                 }
             };
+
+            
         }
 
 
@@ -58,7 +92,9 @@ namespace CrimeCity.Services
         public List<Employee> GetByCriteria(Models.SearchEmployeeCriteria criteria)
         {
             return GetAllEmployees()
-                   .Where(x => Match(x.FirstName, criteria.FirstName) && Match(x.LastName, criteria.LastName))
+                   .Where(x => Match(x.FirstName, criteria.FirstName) && Match(x.LastName, criteria.LastName) 
+                       && Match(Convert.ToString(x.Sex), Convert.ToString(criteria.Sex))
+                       && Match(Convert.ToString(x.Position), Convert.ToString(criteria.Position)))
                    .ToList();
         }
 

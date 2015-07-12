@@ -19,7 +19,9 @@ namespace CrimeCity.Controllers
 
         public ActionResult Admin()
         {
-            return View(new SearchEmployeeModel());
+            return View(new SearchEmployeeModel() {
+                SearchResult = employeeService.GetAllEmployees()
+            });
         }
 
         [HttpPost]

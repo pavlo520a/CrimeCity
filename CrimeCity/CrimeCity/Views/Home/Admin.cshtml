@@ -8,40 +8,67 @@
     @Html.ActionLink("New", "Home", "UserProfile", new { id = 0 })
 </div>
 
+<section id="search">
+    @using (Html.BeginForm("Admin", "Home"))
+    {
+        <div>
+            <p>
+                <label>First Name:</label>
+                @Html.TextBoxFor(x => x.SearchCriteria.FirstName)
+            </p>
+            <p>
+                <label>Last Name:</label>
+                @Html.TextBoxFor(x => x.SearchCriteria.LastName)
+            </p>
+            <p>
+                <label>Sex</label>
+                @Html.DropDownListFor(x => x.SearchCriteria.Sex, new[] {
+               new SelectListItem() {Text = "Male", Value = Convert.ToString(CrimeCity.Models.Employees.Sex.Male)},
+               new SelectListItem() {Text = "Female", Value = Convert.ToString(CrimeCity.Models.Employees.Sex.Female)}
+           })
+            </p>
+            <p>
+                <label>Position</label>
+                @Html.DropDownListFor(x => x.SearchCriteria.Position, new[] {
+               new SelectListItem() {Text = "Detective", Value = Convert.ToString(CrimeCity.Models.Employees.PolicePositions.Detective)},
+               new SelectListItem() {Text = "Policeman", Value = Convert.ToString(CrimeCity.Models.Employees.PolicePositions.Policeman)},
+               new SelectListItem() {Text = "PoliceChief", Value = Convert.ToString(CrimeCity.Models.Employees.PolicePositions.PoliceChief)},
+               new SelectListItem() {Text = "CrimeAnalyst", Value = Convert.ToString(CrimeCity.Models.Employees.PolicePositions.CrimeAnalyst)}
+           })
+            </p>
+        </div>
+        <input type="submit" value="Search" />
+    }
+</section>
 
-@using (Html.BeginForm("Admin", "Home")) 
-{ 
-    <div>
-        <p>
-            <label>First Name:</label>
-            @Html.TextBoxFor(x => x.SearchCriteria.FirstName)
-        </p>
-        <p>
-            <label>Last Name:</label>
-            @Html.TextBoxFor(x => x.SearchCriteria.LastName)
-        </p>
-    </div>
-    <input type="submit" value="Search"/>
-}
+<section id="find">
+    @if (Model.IsNotEmpty)
+    {
+        <table>
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Second Name</th>
+                    <th>Sex</th>
+                    <th>Position</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (CrimeCity.Models.Employees.Employee employee in Model.SearchResult)
+                {
+                    <tr>
 
-@if (Model.IsNotEmpty)
-{ 
-    <div>
-        <p>Search result:</p>
-            <div>
-                <ul>
-                    @foreach (CrimeCity.Models.Employees.Employee employee in Model.SearchResult)
-                    {
-                        <li>
-                            <div>@employee.FirstName</div>
-                            <div>@employee.LastName</div>
-                            <div>@employee.Position</div>
-                        </li>
-                    }
-                </ul>
-            </div>
-    </div>
-}
+                        <td>@employee.FirstName</td>
+                        <td>@employee.LastName</td>
+                        <td>@employee.Sex</td>
+                        <td>@employee.Position</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    
+</section>
 
 
 
