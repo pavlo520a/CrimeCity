@@ -7,7 +7,7 @@ namespace CrimeCity.Models
 {
     public class User
     {
-        public string user { get; set; }
-        public string password { get; set; }
+        public string Login { get; set; }
+        public string Password { get; set; }
     }
 }

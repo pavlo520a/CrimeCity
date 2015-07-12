@@ -17,7 +17,7 @@ namespace CrimeCity.Controllers
         [HttpPost]
         public ActionResult Login(User model)
         {
-            switch (model.user)
+            switch (model.Login)
             {
                 case "admin":
                     return RedirectToAction("Admin", "Home");
