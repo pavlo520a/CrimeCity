@@ -1,6 +1,5 @@
 ﻿using CrimeCity.Contracts;
 using CrimeCity.Models;
-using CrimeCity.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,9 +12,9 @@ namespace CrimeCity.Controllers
     {
         private readonly IEmployeeService employeeService;
 
-        public HomeController()
+        public HomeController(IEmployeeService employeeService)
         {
-            employeeService = new EmployeeService();
+            this.employeeService = employeeService;
         }
 
         public ActionResult Admin()

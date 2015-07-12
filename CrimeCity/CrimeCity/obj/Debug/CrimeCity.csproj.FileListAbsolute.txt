@@ -108,3 +108,8 @@ D:\Project\CrimeCity\CrimeCity\CrimeCity\CrimeCity\bin\Microsoft.Owin.Security.M
 D:\Project\CrimeCity\CrimeCity\CrimeCity\CrimeCity\obj\Debug\CrimeCity.csprojResolveAssemblyReference.cache
 D:\Project\CrimeCity\CrimeCity\CrimeCity\CrimeCity\obj\Debug\CrimeCity.dll
 D:\Project\CrimeCity\CrimeCity\CrimeCity\CrimeCity\obj\Debug\CrimeCity.pdb
+D:\Projects\CrimeCity\CrimeCity\CrimeCity\CrimeCity\bin\Microsoft.Practices.Unity.Configuration.dll
+D:\Projects\CrimeCity\CrimeCity\CrimeCity\CrimeCity\bin\Microsoft.Practices.Unity.dll
+D:\Projects\CrimeCity\CrimeCity\CrimeCity\CrimeCity\bin\Unity.Mvc5.dll
+D:\Projects\CrimeCity\CrimeCity\CrimeCity\CrimeCity\bin\Microsoft.Practices.Unity.xml
+D:\Projects\CrimeCity\CrimeCity\CrimeCity\CrimeCity\bin\Microsoft.Practices.Unity.Configuration.xml
