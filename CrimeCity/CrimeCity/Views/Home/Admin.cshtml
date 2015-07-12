@@ -1,7 +1,47 @@
-﻿
+﻿@model CrimeCity.Models.SearchEmployeeModel
+
 @{
-    ViewBag.Title = "Admin";
+    ViewBag.Title = "Administrator Page";
 }
 
-<h2>Admin</h2>
+<div>
+    @Html.ActionLink("New", "Home", "UserProfile", new { id = 0 })
+</div>
+
+
+@using (Html.BeginForm("Admin", "Home")) 
+{ 
+    <div>
+        <p>
+            <label>First Name:</label>
+            @Html.TextBoxFor(x => x.SearchCriteria.FirstName)
+        </p>
+        <p>
+            <label>Last Name:</label>
+            @Html.TextBoxFor(x => x.SearchCriteria.LastName)
+        </p>
+    </div>
+    <input type="submit" value="Search"/>
+}
+
+@if (Model.IsNotEmpty)
+{ 
+    <div>
+        <p>Search result:</p>
+            <div>
+                <ul>
+                    @foreach (CrimeCity.Models.Employees.Employee employee in Model.SearchResult)
+                    {
+                        <li>
+                            <div>@employee.FirstName</div>
+                            <div>@employee.LastName</div>
+                            <div>@employee.Position</div>
+                        </li>
+                    }
+                </ul>
+            </div>
+    </div>
+}
+
+
 
