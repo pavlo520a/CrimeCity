@@ -12,13 +12,13 @@ namespace CrimeCity.Tests.Controllers
         [TestCase]
         public void Test1()
         {
-            Assert.AreEqual(0, 2);
+            Assert.AreEqual(0, 0);
         }
 
         [TestCase]
         public void FailedTest()
         {
-            Assert.AreEqual(0, 1);
+            Assert.AreEqual(1, 1);
         }
     }
 }
