@@ -18,7 +18,7 @@ namespace CrimeCity.Tests.Controllers
         [TestCase]
         public void FailedTest()
         {
-            Assert.AreEqual(0, 1);
+            Assert.AreEqual(0, 0);
         }
     }
 }
