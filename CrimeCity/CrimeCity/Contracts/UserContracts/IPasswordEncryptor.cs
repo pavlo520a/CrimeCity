@@ -8,7 +8,7 @@ namespace CrimeCity.Contracts.UserContracts
 {
     public interface IPasswordEncryptor
     {
-        string Encrypt(string password);
-        bool IsValid(string password);
+        string GetHash(string password);
+        bool IsValid(string password, string hash);
     }
 }
