@@ -15,7 +15,7 @@ body {
 h2 {
     text-align: center;
     font-size: 2.5em;
-    font-style: inherit;
+    font-style: initial;
 }
 
 .login {
