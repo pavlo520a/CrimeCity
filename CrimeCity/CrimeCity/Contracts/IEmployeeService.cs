@@ -1,4 +1,5 @@
-﻿using CrimeCity.Models.Crimes;
+﻿using CrimeCity.Models;
+using CrimeCity.Models.Crimes;
 using CrimeCity.Models.Employees;
 using CrimeCity.Models.Employees.Positions;
 using System;
@@ -13,5 +14,6 @@ namespace CrimeCity.Contracts
     {
         List<Employee> GetAllEmployees();
         List<Employee> GetDetectives();
+        List<Employee> GetByCriteria(SearchEmployeeCriteria criteria);
     }
 }

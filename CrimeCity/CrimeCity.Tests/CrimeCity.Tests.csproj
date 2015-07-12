@@ -101,6 +101,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BL\PasswordEncryptorTest.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

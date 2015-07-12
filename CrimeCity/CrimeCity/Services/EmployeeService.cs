@@ -28,6 +28,20 @@ namespace CrimeCity.Services
                             Description = "Red Ring"
                         }
                     }
+                },
+
+                new Detective()
+                {
+                    FirstName = "Nick",
+                    LastName = "Burkhardt",
+                    AssignedCrimes = new List<Crime>()
+                    {
+                        new Crime()
+                        {
+                            Name = "Grimm",
+                            Description = "Grimm"
+                        }
+                    }
                 }
             };
         }
@@ -38,6 +52,21 @@ namespace CrimeCity.Services
             return GetAllEmployees()
                   .Where(x => x.Position == PolicePositions.Detective)
                   .ToList();
+        }
+
+
+        public List<Employee> GetByCriteria(Models.SearchEmployeeCriteria criteria)
+        {
+            return GetAllEmployees()
+                   .Where(x => Match(x.FirstName, criteria.FirstName) && Match(x.LastName, criteria.LastName))
+                   .ToList();
+        }
+
+        private bool Match(string modelValue, string criteriaValue) 
+        {
+            return string.IsNullOrEmpty(criteriaValue) ||
+                   (!string.IsNullOrEmpty(modelValue) &&
+                   modelValue.ToLower().Contains(criteriaValue.ToLower()));
         }
     }
 }
