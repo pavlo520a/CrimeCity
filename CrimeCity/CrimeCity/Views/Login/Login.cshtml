@@ -1,0 +1,15 @@
+﻿@model CrimeCity.Models.User
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Ввійдіть в систему</h2>
+
+@using (Html.BeginForm("Login", "Login"))
+{
+    <div class="login">
+        Login: @Html.TextBoxFor(x => x.user) <br />
+        Password: @Html.PasswordFor(x => x.password) <br />
+        <input type="submit" value="Вхід">
+    </div>
+}
