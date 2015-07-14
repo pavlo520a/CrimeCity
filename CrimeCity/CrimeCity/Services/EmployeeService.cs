@@ -74,6 +74,13 @@ namespace CrimeCity.Services
                             Description = "Destroy Merlin"
                         }
                     }
+                },
+
+                new Policeman()
+                {
+                    FirstName = "Yakas'",
+                    LastName = "Baba",
+                    Sex = Models.Employees.Sex.Female,
                 }
             };
 
@@ -93,8 +100,8 @@ namespace CrimeCity.Services
         {
             return GetAllEmployees()
                    .Where(x => Match(x.FirstName, criteria.FirstName) && Match(x.LastName, criteria.LastName) 
-                       && Match(Convert.ToString(x.Sex), Convert.ToString(criteria.Sex))
-                       && Match(Convert.ToString(x.Position), Convert.ToString(criteria.Position)))
+                       && Match(Convert.ToString((int)x.Sex), Convert.ToString((int)criteria.Sex))
+                       && Match(Convert.ToString((int)x.Position), Convert.ToString((int)criteria.Position)))
                    .ToList();
         }
 

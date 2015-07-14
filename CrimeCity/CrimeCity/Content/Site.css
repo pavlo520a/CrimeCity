@@ -2,6 +2,15 @@
     background-color: #494646;
 }
 
+.right{
+    text-align: right;
+    clear: both;
+}
+
+.left{
+    float: left;
+}
+
 body {
     padding-top: 50px;
     padding-bottom: 20px;
@@ -19,7 +28,7 @@ h2 {
 }
 
 .login {
-    text-align: center;
+    float: left;
     font-style: italic;
     font-size: 2em;
 }

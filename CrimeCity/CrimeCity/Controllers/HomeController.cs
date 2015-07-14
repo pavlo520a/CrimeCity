@@ -30,5 +30,15 @@ namespace CrimeCity.Controllers
             criteria.SearchResult = employeeService.GetByCriteria(criteria.SearchCriteria);
             return View(criteria);
         }
+
+        public ActionResult Info(string category)
+        {
+            foreach (var employee in employeeService.GetAllEmployees())
+            {
+                if (employee.ToString() == category)
+                    return View(employee);
+            }
+            return View();
+        }
     }
 }

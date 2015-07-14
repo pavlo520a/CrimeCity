@@ -22,19 +22,11 @@
             </p>
             <p>
                 <label>Sex</label>
-                @Html.DropDownListFor(x => x.SearchCriteria.Sex, new[] {
-               new SelectListItem() {Text = "Male", Value = Convert.ToString(CrimeCity.Models.Employees.Sex.Male)},
-               new SelectListItem() {Text = "Female", Value = Convert.ToString(CrimeCity.Models.Employees.Sex.Female)}
-           })
+                @Html.EnumDropDownListFor(x => x.SearchCriteria.Sex, "Sex", htmlAttributes: new { @class = "form-control" })
             </p>
             <p>
                 <label>Position</label>
-                @Html.DropDownListFor(x => x.SearchCriteria.Position, new[] {
-               new SelectListItem() {Text = "Detective", Value = Convert.ToString(CrimeCity.Models.Employees.PolicePositions.Detective)},
-               new SelectListItem() {Text = "Policeman", Value = Convert.ToString(CrimeCity.Models.Employees.PolicePositions.Policeman)},
-               new SelectListItem() {Text = "PoliceChief", Value = Convert.ToString(CrimeCity.Models.Employees.PolicePositions.PoliceChief)},
-               new SelectListItem() {Text = "CrimeAnalyst", Value = Convert.ToString(CrimeCity.Models.Employees.PolicePositions.CrimeAnalyst)}
-           })
+                @Html.EnumDropDownListFor(x => x.SearchCriteria.Position, "Position", htmlAttributes: new { @class = "form-control" })
             </p>
         </div>
         <input type="submit" value="Search" />
@@ -51,6 +43,7 @@
                     <th>Second Name</th>
                     <th>Sex</th>
                     <th>Position</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -62,6 +55,7 @@
                         <td>@employee.LastName</td>
                         <td>@employee.Sex</td>
                         <td>@employee.Position</td>
+                        <td>@Html.ActionLink("More", "Info", "Home", new { category = employee.ToString() }, null)</td>
                     </tr>
                 }
             </tbody>
@@ -69,6 +63,3 @@
     }
     
 </section>
-
-
-
