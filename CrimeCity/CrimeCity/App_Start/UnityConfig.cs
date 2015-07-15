@@ -3,6 +3,7 @@ using Microsoft.Practices.Unity;
 using Unity.Mvc5;
 using CrimeCity.Contracts;
 using CrimeCity.Services;
+using CrimeCity.BusinessLogic.Finders;
 
 namespace CrimeCity
 {
@@ -12,6 +13,7 @@ namespace CrimeCity
         {
 			var container = new UnityContainer();
 
+            container.RegisterType<IFindersFactory, FindersFactory>();
             container.RegisterType<IEmployeeService, EmployeeService>();
             
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));

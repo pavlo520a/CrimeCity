@@ -1,7 +1,5 @@
 ﻿using CrimeCity.Models;
-using CrimeCity.Models.Crimes;
 using CrimeCity.Models.Employees;
-using CrimeCity.Models.Employees.Positions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +8,9 @@ using System.Threading.Tasks;
 
 namespace CrimeCity.Contracts
 {
-    public interface IEmployeeService
+    public interface IFindersFactory
     {
-        List<Employee> GetAllEmployees();
+        List<Employee> FindEmployees(SearchEmployeeCriteria criteria);
+        List<Employee> FindEmployees();
     }
 }

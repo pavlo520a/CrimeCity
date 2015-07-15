@@ -86,32 +86,5 @@ namespace CrimeCity.Services
 
             
         }
-
-
-        public List<Employee> GetDetectives()
-        {
-            return GetAllEmployees()
-                  .Where(x => x.Position == PolicePositions.Detective)
-                  .ToList();
-        }
-
-
-        public List<Employee> GetByCriteria(Models.SearchEmployeeCriteria criteria)
-        {
-            return GetAllEmployees()
-                   .Where(x => Match(x.FirstName, criteria.FirstName) && Match(x.LastName, criteria.LastName) 
-                       && Match(Convert.ToString((int)x.Sex), Convert.ToString((int)criteria.Sex))
-                       && Match(Convert.ToString((int)x.Position), Convert.ToString((int)criteria.Position)))
-                   .ToList();
-        }
-
-        private bool Match(string modelValue, string criteriaValue) 
-        {
-            if (criteriaValue == "0" )
-                return true;
-            return string.IsNullOrEmpty(criteriaValue) ||
-                   (!string.IsNullOrEmpty(modelValue) &&
-                   modelValue.ToLower().Contains(criteriaValue.ToLower()));
-        }
     }
 }

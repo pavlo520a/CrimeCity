@@ -9,6 +9,7 @@ namespace CrimeCity.Models.Employees
     {
         public int Salary { get; set; }
         public PolicePositions Position { get; protected set; }
+
         public override string ToString()
         {
             return FirstName + " " + LastName + " " + Sex + " " + Position + ".";

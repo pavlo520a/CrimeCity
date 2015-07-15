@@ -169,8 +169,12 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
+    <Compile Include="BusinessLogic\Finders\EmployeeFinder.cs" />
+    <Compile Include="BusinessLogic\Finders\FindersFactory.cs" />
     <Compile Include="BusinessLogic\PasswordEncryptor.cs" />
     <Compile Include="Contracts\IEmployeeService.cs" />
+    <Compile Include="Contracts\IFinder.cs" />
+    <Compile Include="Contracts\IFindersFactory.cs" />
     <Compile Include="Contracts\UserContracts\IPasswordEncryptor.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />

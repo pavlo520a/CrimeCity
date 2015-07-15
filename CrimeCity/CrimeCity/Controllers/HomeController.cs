@@ -10,32 +10,33 @@ namespace CrimeCity.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IEmployeeService employeeService;
+        private readonly IFindersFactory finders;
 
-        public HomeController(IEmployeeService employeeService)
+        public HomeController(IFindersFactory finders)
         {
-            this.employeeService = employeeService;
+            this.finders = finders;
         }
 
         public ActionResult Admin()
         {
             return View(new SearchEmployeeModel() {
-                SearchResult = employeeService.GetAllEmployees()
+                SearchResult = finders.FindEmployees()
             });
         }
 
         [HttpPost]
         public ActionResult Admin(SearchEmployeeModel criteria)
         {
-            criteria.SearchResult = employeeService.GetByCriteria(criteria.SearchCriteria);
+            criteria.SearchResult = finders.FindEmployees(criteria.SearchCriteria);
             return View(criteria);
         }
 
         public ActionResult Info(string category)
         {
-            foreach (var employee in employeeService.GetAllEmployees())
+            foreach (var employee in finders.FindEmployees())
             {
-                if (employee.ToString() == category)
+                //Чому параметер category порівнюється з ToString()
+                if (employee.ToString() == category) //WHAT THE FUCK? ???
                     return View(employee);
             }
             return View();
