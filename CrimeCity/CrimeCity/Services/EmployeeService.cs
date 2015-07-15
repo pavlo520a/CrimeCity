@@ -107,6 +107,8 @@ namespace CrimeCity.Services
 
         private bool Match(string modelValue, string criteriaValue) 
         {
+            if (criteriaValue == "0" )
+                return true;
             return string.IsNullOrEmpty(criteriaValue) ||
                    (!string.IsNullOrEmpty(modelValue) &&
                    modelValue.ToLower().Contains(criteriaValue.ToLower()));

@@ -7,7 +7,7 @@ namespace CrimeCity.Models.Employees
 {
     public enum PolicePositions
     {
-        Administrator,
+        Administrator = 1,
         PoliceChief,
         Detective,
         Policeman,
