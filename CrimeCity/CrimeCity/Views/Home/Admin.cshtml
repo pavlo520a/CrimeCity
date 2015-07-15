@@ -4,9 +4,9 @@
     ViewBag.Title = "Administrator Page";
 }
 
-<div>
-    @Html.ActionLink("New", "Home", "UserProfile", new { id = 0 })
-</div>
+<button class="button10">
+    @Html.ActionLink("New employee", "Home", "UserProfile", new { id = 0 })
+</button>
 
 <section id="search">
     @using (Html.BeginForm("Admin", "Home"))
