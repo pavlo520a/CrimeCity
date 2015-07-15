@@ -3,11 +3,6 @@
 @{
     ViewBag.Title = "Administrator Page";
 }
-
-<button class="button10">
-    @Html.ActionLink("New employee", "Home", "UserProfile", new { id = 0 })
-</button>
-
 <section id="search">
     @using (Html.BeginForm("Admin", "Home"))
     {
@@ -55,11 +50,24 @@
                         <td>@employee.LastName</td>
                         <td>@employee.Sex</td>
                         <td>@employee.Position</td>
-                        <td>@Html.ActionLink("More", "Info", "Home", new { category = employee.ToString() }, null)</td>
+                        <td>@Html.ActionLink("More", "Info", "Home", new { category = employee.Id }, null)</td>
                     </tr>
                 }
             </tbody>
         </table>
     }
-    
+</section>
+
+<section class="rightNavigation">
+    <nav>
+        <button>
+            @Html.ActionLink("Exit", "Home")
+        </button>
+        <button>
+            @Html.ActionLink("Change password", "Home")
+        </button>
+        <button>
+            @Html.ActionLink("New employee", "Home", "UserProfile", new { id = 0 })
+        </button>
+    </nav>
 </section>

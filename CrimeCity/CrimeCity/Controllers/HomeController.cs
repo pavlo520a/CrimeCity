@@ -1,5 +1,6 @@
 ﻿using CrimeCity.Contracts;
 using CrimeCity.Models;
+using CrimeCity.Models.Employees;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,15 +32,10 @@ namespace CrimeCity.Controllers
             return View(criteria);
         }
 
-        public ActionResult Info(string category)
+        public ActionResult Info(int category)
         {
-            foreach (var employee in finders.FindEmployees())
-            {
-                //Чому параметер category порівнюється з ToString()
-                if (employee.ToString() == category) //WHAT THE FUCK? ???
-                    return View(employee);
-            }
-            return View();
+            Employee employee = finders.FindEmployees().Find(x => x.Id == category);
+            return View(employee);
         }
     }
 }

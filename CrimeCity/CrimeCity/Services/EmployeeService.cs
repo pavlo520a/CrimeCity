@@ -28,7 +28,8 @@ namespace CrimeCity.Services
                             Name = "Red Ring",
                             Description = "Red Ring"
                         }
-                    }
+                    },
+                    Id = 1 
                 },
 
                 new Detective()
@@ -43,7 +44,8 @@ namespace CrimeCity.Services
                             Name = "Grimm",
                             Description = "Grimm"
                         }
-                    }
+                    },
+                    Id = 2
                 },
 
                 new Policeman()
@@ -58,7 +60,8 @@ namespace CrimeCity.Services
                             Name = "Revers Flash",
                             Description = "Revers Flash"
                         }
-                    }
+                    },
+                    Id = 3
                 },
 
                 new Policeman()
@@ -73,7 +76,8 @@ namespace CrimeCity.Services
                             Name = "Merlin",
                             Description = "Destroy Merlin"
                         }
-                    }
+                    },
+                    Id = 4
                 },
 
                 new Policeman()
@@ -81,6 +85,7 @@ namespace CrimeCity.Services
                     FirstName = "Yakas'",
                     LastName = "Baba",
                     Sex = Models.Employees.Sex.Female,
+                    Id = 5
                 }
             };
 

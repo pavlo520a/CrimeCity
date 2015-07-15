@@ -14,6 +14,17 @@ namespace CrimeCity.Models.Employees
         public DateTime DateOfBirth { get; set; }
         public ContactInfo ContactInformation { get; set; }
         public LocationInfo Address { get; set; }
+        private int id;
+        public int Id {
+            get 
+            {
+                return id;
+            }
+            set 
+            {
+                id = value;
+            }
+        }
     }
 
     public enum Sex
