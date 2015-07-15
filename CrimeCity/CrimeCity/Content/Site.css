@@ -1,5 +1,5 @@
 ﻿html {
-    background-color: #494646;
+    background-color: #bac3f6;
 }
 
 .right{
@@ -18,16 +18,16 @@ body {
     margin-right: 30px;
     margin-bottom: 40px;
     margin-top: 40px;
-    background-color: #968d8d;
+    background-color: #8282f5;
 }
 
 h2 {
-    text-align: center;
     font-size: 2.5em;
-    font-style: initial;
+    font-style: oblique;
 }
 
 .login {
+    text-align: center;
     float: left;
     font-style: italic;
     font-size: 2em;
@@ -44,26 +44,55 @@ h2 {
 }
 
 table{
-    background-color: #ffffff;
+    background-color: #a5aedc;
     text-align: justify;
 }
 
+    table a {
+        text-decoration: none;
+    }
+
 thead tr {
-    background-color: #494646;
+    background-color: #8282f5;
     font-style:oblique;
-    color: gold;
+    color: navy;
     text-align: center;
 }
 
 tbody tr:nth-child(even) {
-    background-color: red;
+    background-color: #828dcb;
 }
 
 tbody tr:nth-child(odd) {
-    background-color: blue;
+    background-color: #98a1d8;
 }
 
 tbody tr {
     color: black;
     text-align: center;
+}
+
+button a{
+    display: inline-block;
+    user-select: none;
+    text-decoration: none;
+    font-weight: 900;
+    padding: 5em, 2em;
+    border: 2px solid #f3883c;
+    border-radius: 10px;
+    outline: none;
+    background: linear-gradient(#c2a400, #f2e184)#f3883c;
+}
+
+    button a:active
+     {
+        background: linear-gradient(#ff0000, #804242) #041fb9;
+    }
+    button a:hover {
+         background: linear-gradient(#e68c00, #decd6d) #ed7a7a;
+    }
+
+button {
+    background-color: transparent;
+    border: none;
 }

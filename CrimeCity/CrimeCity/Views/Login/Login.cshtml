@@ -5,9 +5,10 @@
 
 <h2>Ввійдіть в систему</h2>
 
-@using (Html.BeginForm("Login", "Login"))
-{
-    <div class="login">
+<div id="login_center">
+    @using (Html.BeginForm("Login", "Login"))
+    {
+        <div class="login">
             <p class="right">
                 <span class="left">Login:</span>
                 @Html.TextBoxFor(x => x.Login)
@@ -17,5 +18,6 @@
                 @Html.PasswordFor(x => x.Password)
             </p>
             <input type="submit" value="Вхід" />
-    </div>   
-}
+        </div>
+    }
+</div>
