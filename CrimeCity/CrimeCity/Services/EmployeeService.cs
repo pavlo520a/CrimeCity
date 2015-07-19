@@ -29,7 +29,22 @@ namespace CrimeCity.Services
                             Description = "Red Ring"
                         }
                     },
-                    Id = 1 
+                    Id = 1,
+                    Address = new LocationInfo()
+                    {
+                        City = "London",
+                        Street = "Baker Street",
+                        House = "4",
+                        Flat = "221B"
+                    },
+                    DateOfBirth = new DateTime(1988, 12, 5),
+                    ContactInformation = new ContactInfo()
+                    {
+                        Skype = "Holmes_SherlockHolmes",
+                        Email = "SherlockHolmes@gmail.com",
+                        PhoneNumber = "0635748999"
+                    },
+                    Salary = 4000
                 },
 
                 new Detective()
