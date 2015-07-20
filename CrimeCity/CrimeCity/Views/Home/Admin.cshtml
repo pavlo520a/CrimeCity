@@ -1,4 +1,4 @@
-﻿@model CrimeCity.Models.SearchEmployeeModel
+﻿@model CrimeCity.Models.AdminViewModel
 
 @{
     ViewBag.Title = "Administrator Page";
@@ -42,7 +42,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (CrimeCity.Models.Employees.Employee employee in Model.SearchResult)
+                @foreach (CrimeCity.Models.Employees.EmployeeModel employee in Model.SearchResult)
                 {
                     <tr>
 
