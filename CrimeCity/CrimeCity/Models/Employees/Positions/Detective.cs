@@ -6,13 +6,13 @@ using System.Web;
 
 namespace CrimeCity.Models.Employees.Positions
 {
-    public class Detective : Employee
+    public class Detective : EmployeeModel
     {
         public Detective()
         {
             this.Position = PolicePositions.Detective;
         }
 
-        public List<Crime> AssignedCrimes { get; set; }
+        public List<CrimeModel> AssignedCrimes { get; set; }
     }
 }

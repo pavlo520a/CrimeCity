@@ -5,7 +5,7 @@ using System.Web;
 
 namespace CrimeCity.Models.Employees
 {
-    public class LocationInfo
+    public class LocationInfoModel
     {
         public string City { get; set; }
         public string Street { get; set; }

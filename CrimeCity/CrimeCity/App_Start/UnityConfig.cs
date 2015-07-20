@@ -2,8 +2,10 @@ using System.Web.Mvc;
 using Microsoft.Practices.Unity;
 using Unity.Mvc5;
 using CrimeCity.Contracts;
-using CrimeCity.Services;
 using CrimeCity.BusinessLogic.Finders;
+using CrimeCity.Repositories;
+using CrimeCity.Contracts.Repositories;
+using CrimeCity.BusinessLogic.Transformers;
 
 namespace CrimeCity
 {
@@ -13,8 +15,11 @@ namespace CrimeCity
         {
 			var container = new UnityContainer();
 
-            container.RegisterType<IFindersFactory, FindersFactory>();
-            container.RegisterType<IEmployeeService, EmployeeService>();
+            container.RegisterType<ITransformer<CrimeCity.Models.Employees.EmployeeModel, 
+                                               CrimeCity.DB.Employee>, 
+                                   EmployeeTransformer>();
+
+            container.RegisterType<IEmployeeRepository, EmployeeRepository>();
             
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }

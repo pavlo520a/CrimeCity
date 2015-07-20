@@ -5,7 +5,7 @@ using System.Web;
 
 namespace CrimeCity.Models.Employees
 {
-    public class Employee : Person
+    public class EmployeeModel : PersonModel
     {
         public int Salary { get; set; }
         public PolicePositions Position { get; protected set; }

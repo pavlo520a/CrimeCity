@@ -51,6 +51,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -170,30 +172,65 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="BusinessLogic\Finders\EmployeeFinder.cs" />
-    <Compile Include="BusinessLogic\Finders\FindersFactory.cs" />
     <Compile Include="BusinessLogic\PasswordEncryptor.cs" />
-    <Compile Include="Contracts\IEmployeeService.cs" />
+    <Compile Include="BusinessLogic\Transformers\CollectionTransformer.cs" />
+    <Compile Include="BusinessLogic\Transformers\EmployeeTransformer.cs" />
     <Compile Include="Contracts\IFinder.cs" />
-    <Compile Include="Contracts\IFindersFactory.cs" />
+    <Compile Include="Contracts\ITransformer.cs" />
+    <Compile Include="Contracts\Repositories\IEmployeeRepository.cs" />
     <Compile Include="Contracts\UserContracts\IPasswordEncryptor.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="DB\Contact.cs">
+      <DependentUpon>CrimeCityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\CrimeCityModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrimeCityModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\CrimeCityModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrimeCityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\CrimeCityModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrimeCityModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\CrimeCityRepository.cs" />
+    <Compile Include="DB\Employee.cs">
+      <DependentUpon>CrimeCityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Location.cs">
+      <DependentUpon>CrimeCityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Person.cs">
+      <DependentUpon>CrimeCityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\PolicePosition.cs">
+      <DependentUpon>CrimeCityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\User.cs">
+      <DependentUpon>CrimeCityModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Employees\Positions\Policeman.cs" />
-    <Compile Include="Models\SearchEmployeeCriteria.cs" />
-    <Compile Include="Models\SearchEmployeeModel.cs" />
+    <Compile Include="Models\AdminViewSearchModel.cs" />
+    <Compile Include="Models\AdminViewModel.cs" />
     <Compile Include="Models\User.cs" />
-    <Compile Include="Models\Crimes\Crime.cs" />
-    <Compile Include="Models\Employees\ContactInfo.cs" />
+    <Compile Include="Models\Crimes\CrimeModel.cs" />
+    <Compile Include="Models\Employees\ContactInfoModel.cs" />
     <Compile Include="Models\Employees\Positions\Detective.cs" />
-    <Compile Include="Models\Employees\Employee.cs" />
-    <Compile Include="Models\Employees\LocationInfo.cs" />
-    <Compile Include="Models\Employees\Person.cs" />
+    <Compile Include="Models\Employees\EmployeeModel.cs" />
+    <Compile Include="Models\Employees\LocationInfoModel.cs" />
+    <Compile Include="Models\Employees\PersonModel.cs" />
     <Compile Include="Models\Employees\Positions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\EmployeeService.cs" />
+    <Compile Include="Repositories\EmployeeRepository.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -204,6 +241,23 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="DB\CrimeCityModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CrimeCityModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="DB\CrimeCityModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CrimeCityModel.edmx</DependentUpon>
+      <LastGenOutput>CrimeCityModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DB\CrimeCityModel.edmx.diagram">
+      <DependentUpon>CrimeCityModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="DB\CrimeCityModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CrimeCityModel.edmx</DependentUpon>
+      <LastGenOutput>CrimeCityModel.cs</LastGenOutput>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -234,6 +288,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -242,6 +297,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,4 +1,5 @@
 ﻿using CrimeCity.Contracts;
+using CrimeCity.Contracts.Repositories;
 using CrimeCity.Models;
 using System;
 using System.Collections.Generic;
@@ -10,30 +11,30 @@ namespace CrimeCity.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IFindersFactory finders;
+        private readonly IEmployeeRepository repository;
 
-        public HomeController(IFindersFactory finders)
+        public HomeController(IEmployeeRepository repository)
         {
-            this.finders = finders;
+            this.repository = repository;
         }
 
         public ActionResult Admin()
         {
-            return View(new SearchEmployeeModel() {
-                SearchResult = finders.FindEmployees()
+            return View(new AdminViewModel() {
+                SearchResult = repository.GetAllEmployees()
             });
         }
 
         [HttpPost]
-        public ActionResult Admin(SearchEmployeeModel criteria)
+        public ActionResult Admin(AdminViewModel model)
         {
-            criteria.SearchResult = finders.FindEmployees(criteria.SearchCriteria);
-            return View(criteria);
+            model.SearchResult = repository.FindEmployees(model.SearchCriteria);
+            return View(model);
         }
 
         public ActionResult Info(string category)
         {
-            foreach (var employee in finders.FindEmployees())
+            foreach (var employee in repository.GetAllEmployees())
             {
                 //Чому параметер category порівнюється з ToString()
                 if (employee.ToString() == category) //WHAT THE FUCK? ???

@@ -5,7 +5,7 @@ using System.Web;
 
 namespace CrimeCity.Models.Crimes
 {
-    public class Crime
+    public class CrimeModel
     {
         public string Name { get; set; }
         public string Description { get; set; }

@@ -6,7 +6,7 @@ using System.Web;
 
 namespace CrimeCity.Models
 {
-    public class SearchEmployeeCriteria
+    public class AdminViewSearchModel
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }

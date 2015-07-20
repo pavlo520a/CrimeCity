@@ -8,16 +8,16 @@ using System.Web;
 
 namespace CrimeCity.BusinessLogic.Finders
 {
-    public class EmployeeFinder : IFinder<Employee, SearchEmployeeCriteria>
+    public class EmployeeFinder : IFinder<EmployeeModel, AdminViewSearchModel>
     {
-        private readonly List<Employee> employees = new List<Employee>();
+        private readonly List<EmployeeModel> employees = new List<EmployeeModel>();
 
-        public EmployeeFinder(List<Employee> employees)
+        public EmployeeFinder(List<EmployeeModel> employees)
         {
             this.employees = employees;
         }
 
-        public List<Employee> Find(SearchEmployeeCriteria criteria)
+        public List<EmployeeModel> Find(AdminViewSearchModel criteria)
         {
             return employees.Where(x => Match(x.FirstName, criteria.FirstName) 
                                      && Match(x.LastName, criteria.LastName) 
