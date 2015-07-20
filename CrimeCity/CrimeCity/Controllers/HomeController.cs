@@ -1,6 +1,7 @@
 ﻿using CrimeCity.Contracts;
 using CrimeCity.Contracts.Repositories;
 using CrimeCity.Models;
+using CrimeCity.Models.Employees;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,15 +33,25 @@ namespace CrimeCity.Controllers
             return View(model);
         }
 
-        public ActionResult Info(string category)
+        public ActionResult Info(int category, string parameters = null)
         {
-            foreach (var employee in repository.GetAllEmployees())
+            if (String.IsNullOrEmpty(parameters))
+                ViewBag.Http = "Get";
+            else ViewBag.Http = "Post";
+            EmployeeModel employee = repository.GetAllEmployees().Find(x => x.Id == category);
+            return View(employee);
+        }
+
+        [HttpPost]
+        public ActionResult Info(EmployeeModel model)
+        {
+            if(ModelState.IsValid)
             {
-                //Чому параметер category порівнюється з ToString()
-                if (employee.ToString() == category) //WHAT THE FUCK? ???
-                    return View(employee);
+                ViewBag.Http = "Get";
+                EmployeeModel employee = repository.GetAllEmployees().Find(x => x.Id == model.Id);
+                employee = model;
             }
-            return View();
+            return View(model);
         }
     }
 }

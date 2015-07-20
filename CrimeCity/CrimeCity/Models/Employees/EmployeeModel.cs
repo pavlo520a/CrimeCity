@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -7,12 +8,9 @@ namespace CrimeCity.Models.Employees
 {
     public class EmployeeModel : PersonModel
     {
+        [Range(1200, 1000000)]
         public int Salary { get; set; }
-        public PolicePositions Position { get; protected set; }
-
-        public override string ToString()
-        {
-            return FirstName + " " + LastName + " " + Sex + " " + Position + ".";
-        }
+        [EnumDataType(typeof(PolicePositions))]
+        public PolicePositions Position { get; set; }
     }
 }

@@ -1,10 +1,4 @@
-﻿html {
-    background-color: #bac3f6;
-    height: 100%;
-    width: 100%;
-}
-
-.right{
+﻿.right{
     text-align: right;
     clear: both;
 }
@@ -14,23 +8,25 @@
 }
 
 body {
-    padding-top: 50px;
-    padding-bottom: 20px;
-    margin-left: 50px;
-    margin-right: 30px;
-    margin-bottom: 40px;
-    margin-top: 40px;
     background-color: #8282f5;
     height: 100%;
     width: 100%;
 }
 
-#login_center {
-        margin: 0 auto;
+section {
+    margin-bottom: 2em;
+    margin-left: 4em;
+    padding-top: 10px;
+    padding-left: 20px;
+}
 
-            }
+#login_center {
+    margin: 10em;
+    padding-left: 20em;
+}
 
 h2 {
+    padding-left: 1em;
     font-size: 2.5em;
     font-style: oblique;
 }
@@ -49,7 +45,13 @@ h2 {
 }
 
 #find {
-    margin-left: 22%;
+    position: absolute;
+    margin-left: 25%;
+}
+
+.rightNavigation {
+    position: absolute;
+    margin-left: 90%;
 }
 
 table{
