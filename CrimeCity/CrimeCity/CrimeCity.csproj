@@ -199,7 +199,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CrimeCityModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Repositories\CrimeCityRepository.cs" />
     <Compile Include="DB\Employee.cs">
       <DependentUpon>CrimeCityModel.tt</DependentUpon>
     </Compile>
@@ -215,6 +214,7 @@
     <Compile Include="DB\User.cs">
       <DependentUpon>CrimeCityModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Repositories\CrimeCityRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
