@@ -26,6 +26,9 @@ namespace CrimeCity
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/AdminMenu").Include(
+                "~/MyScripts/AdminMenu.js"));
         }
     }
 }

@@ -19,6 +19,12 @@ namespace CrimeCity.Models.Employees
         public LocationInfoModel Address { get; set; }
         [ScaffoldColumn(false)]
         public int Id { get; set; }
+
+        public PersonModel()
+        {
+            ContactInformation = new ContactInfoModel();
+            Address = new LocationInfoModel();
+        }
     }
 
     public enum Sex

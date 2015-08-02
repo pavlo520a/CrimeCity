@@ -8,81 +8,80 @@
     <span>@Model.LastName</span>
 </h2>
 
-@if (ViewBag.Http == "Get")
-{
-    <section>
+<section id="readOnlyForm">
+    <p>
+        Position: @Model.Position <br />
+        Sex: @Model.Sex <br />
+        Date of birth: @Model.DateOfBirth.ToShortDateString()
+    </p>
+    <p>
+        Address:
+        <ul>
+            <li>City: @Model.Address.City</li>
+            <li>Street: @Model.Address.Street</li>
+            <li>House: @Model.Address.House</li>
+            <li>Flat: @Model.Address.Flat</li>
+        </ul>
+    </p>
+    <p>
+        Contact:
+        <ul>
+            <li>Phone: @Model.ContactInformation.PhoneNumber</li>
+            <li>Email: @Model.ContactInformation.Email</li>
+            <li>Skype: @Model.ContactInformation.Skype</li>
+        </ul>
+    </p>
+    Salary: @Model.Salary
+    <footer>
+        <input type="button" value="Change" id="changeBtn" />
+    </footer>
+</section>
+
+<section class="displayNone" id="editForm">
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary()
         <p>
-            Position: @Model.Position <br />
-            Sex: @Model.Sex <br />
-            Date of birth: @Model.DateOfBirth.ToShortDateString()
+            First name: @Html.TextBoxFor(x => x.FirstName) <br />
+            Last name: @Html.TextBoxFor(x => x.LastName) <br />
+            Sex: @Html.EnumDropDownListFor(x => x.Sex) <br />
+            Date of birth:
+             @Html.TextBoxFor(x => x.DateOfBirth, new { Value = Model.DateOfBirth.ToString("dd/mm/yyyy") })
         </p>
         <p>
             Address:
             <ul>
-                <li>City: @Model.Address.City</li>
-                <li>Street: @Model.Address.Street</li>
-                <li>House: @Model.Address.House</li>
-                <li>Flat: @Model.Address.Flat</li>
+                <li>City: @Html.TextBoxFor(x => x.Address.City)</li>
+                <li>Street: @Html.TextBoxFor(x => x.Address.Street)</li>
+                <li>House: @Html.TextBoxFor(x => x.Address.House)</li>
+                <li>Flat: @Html.TextBoxFor(x => x.Address.Flat)</li>
             </ul>
         </p>
         <p>
             Contact:
             <ul>
-                <li>Phone: @Model.ContactInformation.PhoneNumber</li>
-                <li>Email: @Model.ContactInformation.Email</li>
-                <li>Skype: @Model.ContactInformation.Skype</li>
+                <li>Phone: @Html.TextBoxFor(x => x.ContactInformation.PhoneNumber)</li>
+                <li>Email: @Html.TextBoxFor(x => x.ContactInformation.Email)</li>
+                <li>Skype: @Html.TextBoxFor(x => x.ContactInformation.Skype)</li>
             </ul>
         </p>
-        Salary: @Model.Salary
+        <p>
+            @Html.HiddenFor(x => x.Id)
+            @Html.HiddenFor(x => x.Position)
+            @Html.HiddenFor(x => x.Salary)
+        </p>
         <footer>
-            @using (Html.BeginForm())
-            {
-                <button>
-                    @Html.ActionLink("Change", "Info", "Home", new { category = Model.Id, parameters = "Change" }, null)
-                </button>
-            }
+            <input type="submit" value="Save" />
         </footer>
-    </section>
-}
-else
-{
-    <section>
-        @using (Html.BeginForm())
-        {
-            @Html.ValidationSummary()
-            <p>
-                First name: @Html.TextBoxFor(x => x.FirstName) <br />
-                Last name: @Html.TextBoxFor(x => x.LastName) <br />
-                Sex: @Html.EnumDropDownListFor(x => x.Sex) <br />
-                Date of birth:
-                @Html.TextBoxFor(x => x.DateOfBirth, new { Value = Model.DateOfBirth.ToString("dd/mm/yyyy")})
-            </p>
-            <p>
-                Address:
-                <ul>
-                    <li>City: @Html.TextBoxFor(x => x.Address.City)</li>
-                    <li>Street: @Html.TextBoxFor(x => x.Address.Street)</li>
-                    <li>House: @Html.TextBoxFor(x => x.Address.House)</li>
-                    <li>Flat: @Html.TextBoxFor(x => x.Address.Flat)</li>
-                </ul>
-            </p>
-            <p>
-                Contact:
-                <ul>
-                    <li>Phone: @Html.TextBoxFor(x => x.ContactInformation.PhoneNumber)</li>
-                    <li>Email: @Html.TextBoxFor(x => x.ContactInformation.Email)</li>
-                    <li>Skype: @Html.TextBoxFor(x => x.ContactInformation.Skype)</li>
-                </ul>
-            </p>
-            <p>
-                @Html.HiddenFor(x => x.Id)
-                @Html.HiddenFor(x => x.Position)
-                @Html.HiddenFor(x => x.Salary)
-            </p>
-            <footer>
-                <input type="submit" value="Save" />
-            </footer>
-        }
-    </section>
-}
+    }
+</section>
 
+@section Scripts
+{
+    <script>
+        $("#changeBtn").click(function () {
+            $("#readOnlyForm").addClass("displayNone");
+            $("#editForm").removeClass("displayNone");
+        });
+    </script>
+}

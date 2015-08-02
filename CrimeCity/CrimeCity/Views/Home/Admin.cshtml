@@ -1,73 +1,107 @@
 ﻿@model CrimeCity.Models.AdminViewModel
-
+@section Scripts{
+    <script src="~/MyScripts/AdminMenu.js"></script>
+    <script src="~/MyScripts/TextInTextBox.js"></script>
+}
 @{
     ViewBag.Title = "Administrator Page";
 }
-<section id="search">
-    @using (Html.BeginForm("Admin", "Home"))
-    {
-        <div>
-            <p>
-                <label>First Name:</label>
-                @Html.TextBoxFor(x => x.SearchCriteria.FirstName)
-            </p>
-            <p>
-                <label>Last Name:</label>
-                @Html.TextBoxFor(x => x.SearchCriteria.LastName)
-            </p>
-            <p>
-                <label>Sex</label>
-                @Html.EnumDropDownListFor(x => x.SearchCriteria.Sex, " ", htmlAttributes: new { @class = "form-control" })
-            </p>
-            <p>
-                <label>Position</label>
-                @Html.EnumDropDownListFor(x => x.SearchCriteria.Position, " ", htmlAttributes: new { @class = "form-control" })
-            </p>
-        </div>
-        <input type="submit" value="Search" />
-    }
+
+<h1>Police Administrator Page</h1>
+
+<section>
+    <button id="NewEmployeeBtn">New employee</button>
+    <button id="EmployeesBtn" class="activeBtn">Employees</button>
+    <button id="PolicePositionBtn">Polise position</button>
 </section>
 
-<section id="find">
-    @if (Model.IsNotEmpty)
-    {
-        <table>
-            <thead>
-                <tr>
-                    <th>First Name</th>
-                    <th>Second Name</th>
-                    <th>Sex</th>
-                    <th>Position</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (CrimeCity.Models.Employees.EmployeeModel employee in Model.SearchResult)
-                {
+<section id="Employees">
+    <div id="search" class="height7em">
+        @using (Html.BeginForm("Admin", "Home"))
+        {
+            <div class="side">
+                @Html.TextBoxFor(x => x.SearchCriteria.FirstName, new { @class = "greyColor", Value = "First name" }) <br />
+                @Html.TextBoxFor(x => x.SearchCriteria.LastName, new { @class = "greyColor", Value = "Last name" })
+            </div>
+            <div class="side">
+                @Html.CheckBoxFor(x => x.SearchCriteria.CheckBoxMale) Male <br />
+                @Html.CheckBoxFor(x => x.SearchCriteria.CheckBoxFemale) Female
+            </div>
+            <div class="side">
+                @Html.EnumDropDownListFor(x => x.SearchCriteria.Position, "Position")
+            </div>
+            <input type="submit" value="Search" />
+        }
+    </div>
+
+    <div>
+        @if (Model.IsNotEmpty)
+        {
+            <table>
+                <thead>
                     <tr>
-
-                        <td>@employee.FirstName</td>
-                        <td>@employee.LastName</td>
-                        <td>@employee.Sex</td>
-                        <td>@employee.Position</td>
-                        <td>@Html.ActionLink("More", "Info", "Home", new { category = employee.Id }, null)</td>
+                        <th>First Name</th>
+                        <th>Second Name</th>
+                        <th>Sex</th>
+                        <th>Position</th>
+                        <th></th>
                     </tr>
-                }
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach (CrimeCity.Models.Employees.EmployeeModel employee in Model.SearchResult)
+                    {
+                        <tr>
+
+                            <td>@employee.FirstName</td>
+                            <td>@employee.LastName</td>
+                            <td>@employee.Sex</td>
+                            <td>@employee.Position</td>
+                            <td>@Html.ActionLink("More", "Info", "Home", new { category = employee.Id }, null)</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+</section>
+
+<section id="NewEmployee" class="displayNone">
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary()
+        <p>
+            First name: @Html.TextBoxFor(x => x.NewEmployee.FirstName) <br />
+            Last name: @Html.TextBoxFor(x => x.NewEmployee.LastName) <br />
+            Sex: @Html.EnumDropDownListFor(x => x.NewEmployee.Sex) <br />
+            Date of birth:
+            @Html.TextBoxFor(x => x.NewEmployee.DateOfBirth)
+        </p>
+        <p>
+            Address:
+            <ul>
+                <li>City: @Html.TextBoxFor(x => x.NewEmployee.Address.City)</li>
+                <li>Street: @Html.TextBoxFor(x => x.NewEmployee.Address.Street)</li>
+                <li>House: @Html.TextBoxFor(x => x.NewEmployee.Address.House)</li>
+                <li>Flat: @Html.TextBoxFor(x => x.NewEmployee.Address.Flat)</li>
+            </ul>
+        </p>
+        <p>
+            Contact:
+            <ul>
+                <li>Phone: @Html.TextBoxFor(x => x.NewEmployee.ContactInformation.PhoneNumber)</li>
+                <li>Email: @Html.TextBoxFor(x => x.NewEmployee.ContactInformation.Email)</li>
+                <li>Skype: @Html.TextBoxFor(x => x.NewEmployee.ContactInformation.Skype)</li>
+            </ul>
+        </p>
+        <p>
+            @Html.HiddenFor(x => x.NewEmployee.Id)
+            @Html.TextBoxFor(x => x.NewEmployee.Position)
+            @Html.TextBoxFor(x => x.NewEmployee.Salary)
+        </p>
+        <footer>
+            <input type="submit" value="Save" />
+        </footer>
     }
 </section>
 
-<section class="rightNavigation">
-    <nav>
-        <button>
-            @Html.ActionLink("Exit", "Home")
-        </button>
-        <button>
-            @Html.ActionLink("Change password", "Home")
-        </button>
-        <button>
-            @Html.ActionLink("New employee", "Home", "UserProfile", new { id = 0 })
-        </button>
-    </nav>
-</section>
+<section id="PolisePosition" class="displayNone">Polise</section>

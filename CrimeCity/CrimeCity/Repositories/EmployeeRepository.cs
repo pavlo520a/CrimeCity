@@ -26,7 +26,20 @@ namespace CrimeCity.Repositories
 
         public List<EmployeeModel> FindEmployees(AdminViewSearchModel criteria)
         {
-            return this.transformer.Translate(Model.Employees.ToList());
+            return this.transformer.Translate(Model.Employees.ToList()).Where(x => Match(x.FirstName, criteria.FirstName)
+                                     && Match(x.LastName, criteria.LastName)
+                                     && Match(Convert.ToString((int)x.Sex), Convert.ToString((int)criteria.Sex))
+                                     && Match(Convert.ToString((int)x.Position), Convert.ToString((int)criteria.Position)))
+                            .ToList();
+        }
+
+        private bool Match(string modelValue, string criteriaValue)
+        {
+            if (criteriaValue == "0")
+                return true;
+            return string.IsNullOrEmpty(criteriaValue) ||
+                   (!string.IsNullOrEmpty(modelValue) &&
+                   modelValue.ToLower().Contains(criteriaValue.ToLower()));
         }
     }
 }

@@ -10,6 +10,7 @@ namespace CrimeCity.Models
     {
         public AdminViewSearchModel SearchCriteria { get; set; }
         public List<EmployeeModel> SearchResult { get; set; }
+        public EmployeeModel NewEmployee { get; set; }
 
         public bool IsNotEmpty
         {

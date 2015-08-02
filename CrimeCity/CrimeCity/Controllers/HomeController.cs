@@ -29,15 +29,13 @@ namespace CrimeCity.Controllers
         [HttpPost]
         public ActionResult Admin(AdminViewModel model)
         {
+            model.SearchCriteria.CheckBoxSex();
             model.SearchResult = repository.FindEmployees(model.SearchCriteria);
             return View(model);
         }
 
-        public ActionResult Info(int category, string parameters = null)
+        public ActionResult Info(int category)
         {
-            if (String.IsNullOrEmpty(parameters))
-                ViewBag.Http = "Get";
-            else ViewBag.Http = "Post";
             EmployeeModel employee = repository.GetAllEmployees().Find(x => x.Id == category);
             return View(employee);
         }
@@ -47,11 +45,11 @@ namespace CrimeCity.Controllers
         {
             if(ModelState.IsValid)
             {
-                ViewBag.Http = "Get";
                 EmployeeModel employee = repository.GetAllEmployees().Find(x => x.Id == model.Id);
                 employee = model;
             }
             return View(model);
         }
+
     }
 }

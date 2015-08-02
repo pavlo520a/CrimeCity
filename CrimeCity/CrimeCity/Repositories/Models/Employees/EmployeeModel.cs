@@ -8,7 +8,7 @@ namespace CrimeCity.Models.Employees
 {
     public class EmployeeModel : PersonModel
     {
-        [Range(1200, 1000000)]
+        [Range(100, 1000000)]
         public int Salary { get; set; }
         [EnumDataType(typeof(PolicePositions))]
         public PolicePositions Position { get; set; }
