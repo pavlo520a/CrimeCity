@@ -10,7 +10,7 @@ using System.Web;
 
 namespace CrimeCity.Repositories
 {
-    public class EmployeeRepository : CrimeCityRepository, IEmployeeRepository
+    public class EmployeeRepository : IEmployeeRepository
     {
         private readonly ITransformer<EmployeeModel, Employee> transformer;
 
@@ -19,27 +19,31 @@ namespace CrimeCity.Repositories
             this.transformer = transformer;
         }
 
-        public List<EmployeeModel> GetAllEmployees()
+        public IEnumerable<EmployeeModel> GetAllEmployees()
         {
-            return this.transformer.Translate(Model.Employees.ToList());
+            List<Employee> result = new List<Employee>();
+
+            using (var context = new DB.CrimeCityModel())
+                result.AddRange(context.Employees);
+
+            return this.transformer.Translate(result);
         }
 
-        public List<EmployeeModel> FindEmployees(AdminViewSearchModel criteria)
+        public IEnumerable<EmployeeModel> FindEmployees(AdminViewSearchModel criteria)
         {
-            return this.transformer.Translate(Model.Employees.ToList()).Where(x => Match(x.FirstName, criteria.FirstName)
-                                     && Match(x.LastName, criteria.LastName)
-                                     && Match(Convert.ToString((int)x.Sex), Convert.ToString((int)criteria.Sex))
-                                     && Match(Convert.ToString((int)x.Position), Convert.ToString((int)criteria.Position)))
-                            .ToList();
+            List<Employee> result = new List<Employee>();
+            
+            using (var context = new DB.CrimeCityModel()) 
+                result.AddRange(context.Employees.Where(x=>Apply(criteria, x)));
+
+            return this.transformer.Translate(result);
         }
 
-        private bool Match(string modelValue, string criteriaValue)
+        private bool Apply(AdminViewSearchModel criteria, Employee employee) 
         {
-            if (criteriaValue == "0")
-                return true;
-            return string.IsNullOrEmpty(criteriaValue) ||
-                   (!string.IsNullOrEmpty(modelValue) &&
-                   modelValue.ToLower().Contains(criteriaValue.ToLower()));
+            return !string.IsNullOrEmpty(criteria.FirstName) ? employee.Person.FirstName.Contains(criteria.FirstName) : true &&
+                   !string.IsNullOrEmpty(criteria.LastName) ? employee.Person.LastName.Contains(criteria.LastName) : true &&
+                   !criteria.CheckBoxFemale.Equals(criteria.CheckBoxMale) ? criteria.CheckBoxMale == employee.Person.Male : true;                   
         }
     }
 }

@@ -9,6 +9,6 @@ namespace CrimeCity.Contracts
     public interface ITransformer<TTO, TFROM>
     {
         TTO Translate(TFROM from);
-        List<TTO> Translate(List<TFROM> from);
+        IEnumerable<TTO> Translate(IEnumerable<TFROM> from);
     }
 }

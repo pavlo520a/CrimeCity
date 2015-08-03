@@ -10,7 +10,7 @@ namespace CrimeCity.BusinessLogic.Transformers
     {
         public abstract TTO Translate(TFROM from);
 
-        public List<TTO> Translate(List<TFROM> from)
+        public IEnumerable<TTO> Translate(IEnumerable<TFROM> from)
         {
             return from.Select(x => Translate(x))
                        .ToList();

@@ -29,14 +29,13 @@ namespace CrimeCity.Controllers
         [HttpPost]
         public ActionResult Admin(AdminViewModel model)
         {
-            model.SearchCriteria.CheckBoxSex();
             model.SearchResult = repository.FindEmployees(model.SearchCriteria);
             return View(model);
         }
 
         public ActionResult Info(int category)
         {
-            EmployeeModel employee = repository.GetAllEmployees().Find(x => x.Id == category);
+            EmployeeModel employee = repository.GetAllEmployees().FirstOrDefault(x => x.Id == category);
             return View(employee);
         }
 
@@ -45,7 +44,7 @@ namespace CrimeCity.Controllers
         {
             if(ModelState.IsValid)
             {
-                EmployeeModel employee = repository.GetAllEmployees().Find(x => x.Id == model.Id);
+                EmployeeModel employee = repository.GetAllEmployees().FirstOrDefault(x => x.Id == model.Id);
                 employee = model;
             }
             return View(model);

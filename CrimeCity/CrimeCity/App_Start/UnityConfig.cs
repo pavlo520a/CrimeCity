@@ -2,7 +2,6 @@ using System.Web.Mvc;
 using Microsoft.Practices.Unity;
 using Unity.Mvc5;
 using CrimeCity.Contracts;
-using CrimeCity.BusinessLogic.Finders;
 using CrimeCity.Repositories;
 using CrimeCity.Contracts.Repositories;
 using CrimeCity.BusinessLogic.Transformers;

@@ -171,7 +171,6 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
-    <Compile Include="BusinessLogic\Finders\EmployeeFinder.cs" />
     <Compile Include="BusinessLogic\PasswordEncryptor.cs" />
     <Compile Include="BusinessLogic\Transformers\CollectionTransformer.cs" />
     <Compile Include="BusinessLogic\Transformers\EmployeeTransformer.cs" />
@@ -214,7 +213,6 @@
     <Compile Include="DB\User.cs">
       <DependentUpon>CrimeCityModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Repositories\CrimeCityRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -291,6 +289,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="BusinessLogic\Finders\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

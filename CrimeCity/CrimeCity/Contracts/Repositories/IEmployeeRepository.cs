@@ -8,7 +8,7 @@ namespace CrimeCity.Contracts.Repositories
 {
     public interface IEmployeeRepository
     {
-        List<Models.Employees.EmployeeModel> GetAllEmployees();
-        List<Models.Employees.EmployeeModel> FindEmployees(Models.AdminViewSearchModel criteria);
+        IEnumerable<Models.Employees.EmployeeModel> GetAllEmployees();
+        IEnumerable<Models.Employees.EmployeeModel> FindEmployees(Models.AdminViewSearchModel criteria);
     }
 }
