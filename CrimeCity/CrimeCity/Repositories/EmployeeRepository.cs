@@ -21,22 +21,23 @@ namespace CrimeCity.Repositories
 
         public IEnumerable<EmployeeModel> GetAllEmployees()
         {
-            List<Employee> result = new List<Employee>();
+            List<EmployeeModel> result = new List<EmployeeModel>();
 
             using (var context = new DB.CrimeCityModel())
-                result.AddRange(context.Employees);
+                result.AddRange(this.transformer.Translate(context.Employees));
 
-            return this.transformer.Translate(result);
+            return result;
         }
 
         public IEnumerable<EmployeeModel> FindEmployees(AdminViewSearchModel criteria)
         {
-            List<Employee> result = new List<Employee>();
+            List<EmployeeModel> result = new List<EmployeeModel>();
             
             using (var context = new DB.CrimeCityModel()) 
-                result.AddRange(context.Employees.Where(x=>Apply(criteria, x)));
+                result.AddRange(this.transformer.Translate(context.Employees
+                                                                  .Where(x=>Apply(criteria, x))));
 
-            return this.transformer.Translate(result);
+            return result;
         }
 
         private bool Apply(AdminViewSearchModel criteria, Employee employee) 
